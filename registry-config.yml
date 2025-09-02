@@ -1,5 +1,9 @@
+# https://distribution.github.io/distribution/about/configuration/#list-of-configuration-options
 version: 0.1
 log:
+  # [error, warn, info, debug]
+  level: info
+  formatter: json
   fields:
     service: registry
 storage:

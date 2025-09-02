@@ -17,16 +17,16 @@ services:
     read_only: false
     restart: always
     sysctls:
-        # mitigate TIME-WAIT Assassination hazards in TCP
+      # mitigate TIME-WAIT Assassination hazards in TCP
       - net.ipv4.tcp_rfc1337=1
-        # SACK is commonly exploited and rarely used
+      # SACK is commonly exploited and rarely used
       - net.ipv4.tcp_sack=0
       - net.ipv4.tcp_dsack=0
       - net.ipv4.tcp_fack=0
-        # SSR could impact TCP's performance on a fixed-speed network (e.g., wired)
+      # SSR could impact TCP's performance on a fixed-speed network (e.g., wired)
       - net.ipv4.tcp_slow_start_after_idle=0
     volumes:
-      - 'redis_data:/bitnami/redis/data'
+      - "redis_data:/bitnami/redis/data"
 
   gcr-registry:
     cap_drop:
@@ -47,16 +47,16 @@ services:
     read_only: false
     restart: always
     sysctls:
-        # mitigate TIME-WAIT Assassination hazards in TCP
+      # mitigate TIME-WAIT Assassination hazards in TCP
       - net.ipv4.tcp_rfc1337=1
-        # SACK is commonly exploited and rarely used
+      # SACK is commonly exploited and rarely used
       - net.ipv4.tcp_sack=0
       - net.ipv4.tcp_dsack=0
       - net.ipv4.tcp_fack=0
-        # SSR could impact TCP's performance on a fixed-speed network (e.g., wired)
+      # SSR could impact TCP's performance on a fixed-speed network (e.g., wired)
       - net.ipv4.tcp_slow_start_after_idle=0
     volumes:
-      - ./config.yml:/etc/docker/registry/config.yml:ro
+      - ./registry-config.yml:/etc/distribution/config.yml:ro
       - ./data:/var/lib/registry
 
   k8s-registry:
@@ -78,16 +78,16 @@ services:
     read_only: false
     restart: always
     sysctls:
-        # mitigate TIME-WAIT Assassination hazards in TCP
+      # mitigate TIME-WAIT Assassination hazards in TCP
       - net.ipv4.tcp_rfc1337=1
-        # SACK is commonly exploited and rarely used
+      # SACK is commonly exploited and rarely used
       - net.ipv4.tcp_sack=0
       - net.ipv4.tcp_dsack=0
       - net.ipv4.tcp_fack=0
-        # SSR could impact TCP's performance on a fixed-speed network (e.g., wired)
+      # SSR could impact TCP's performance on a fixed-speed network (e.g., wired)
       - net.ipv4.tcp_slow_start_after_idle=0
     volumes:
-      - ./config.yml:/etc/docker/registry/config.yml:ro
+      - ./registry-config.yml:/etc/distribution/config.yml:ro
       - ./data:/var/lib/registry
 
   docker-registry:
@@ -111,16 +111,16 @@ services:
     read_only: false
     restart: always
     sysctls:
-        # mitigate TIME-WAIT Assassination hazards in TCP
+      # mitigate TIME-WAIT Assassination hazards in TCP
       - net.ipv4.tcp_rfc1337=1
-        # SACK is commonly exploited and rarely used
+      # SACK is commonly exploited and rarely used
       - net.ipv4.tcp_sack=0
       - net.ipv4.tcp_dsack=0
       - net.ipv4.tcp_fack=0
-        # SSR could impact TCP's performance on a fixed-speed network (e.g., wired)
+      # SSR could impact TCP's performance on a fixed-speed network (e.g., wired)
       - net.ipv4.tcp_slow_start_after_idle=0
     volumes:
-      - ./config.yml:/etc/docker/registry/config.yml:ro
+      - ./registry-config.yml:/etc/distribution/config.yml:ro
       - ./data:/var/lib/registry
 
   quay-registry:
@@ -142,16 +142,16 @@ services:
     read_only: false
     restart: always
     sysctls:
-        # mitigate TIME-WAIT Assassination hazards in TCP
+      # mitigate TIME-WAIT Assassination hazards in TCP
       - net.ipv4.tcp_rfc1337=1
-        # SACK is commonly exploited and rarely used
+      # SACK is commonly exploited and rarely used
       - net.ipv4.tcp_sack=0
       - net.ipv4.tcp_dsack=0
       - net.ipv4.tcp_fack=0
-        # SSR could impact TCP's performance on a fixed-speed network (e.g., wired)
+      # SSR could impact TCP's performance on a fixed-speed network (e.g., wired)
       - net.ipv4.tcp_slow_start_after_idle=0
     volumes:
-      - ./config.yml:/etc/docker/registry/config.yml:ro
+      - ./registry-config.yml:/etc/distribution/config.yml:ro
       - ./data:/var/lib/registry
 
   caddy:
@@ -175,13 +175,13 @@ services:
     read_only: false
     restart: always
     sysctls:
-        # mitigate TIME-WAIT Assassination hazards in TCP
+      # mitigate TIME-WAIT Assassination hazards in TCP
       - net.ipv4.tcp_rfc1337=1
-        # SACK is commonly exploited and rarely used
+      # SACK is commonly exploited and rarely used
       - net.ipv4.tcp_sack=0
       - net.ipv4.tcp_dsack=0
       - net.ipv4.tcp_fack=0
-        # SSR could impact TCP's performance on a fixed-speed network (e.g., wired)
+      # SSR could impact TCP's performance on a fixed-speed network (e.g., wired)
       - net.ipv4.tcp_slow_start_after_idle=0
     ulimits:
       nproc: 16384
